@@ -6,6 +6,7 @@ PYTHON = python3
 
 SOURCEDIR = src
 BUILDDIR = build
+INSTALLDIR = install
 
 PYPROJECT = pyproject.toml
 BUILD_PYPROJECT = $(patsubst %.toml, $(BUILDDIR)/%.toml, $(PYPROJECT))
@@ -19,6 +20,10 @@ BUILD_PYTHON_FILES = $(patsubst $(SOURCEDIR)/%.py, $(BUILDDIR)/%.py, $(SRC_PYTHO
 # Build rules
 all: $(BUILD_PYTHON_FILES) $(BUILD_PYPROJECT) $(BUILD_README)
 	@cd $(BUILDDIR) && python3 -m build
+
+install: all
+	@mkdir -p $(INSTALLDIR)
+	@cp $(BUILDDIR)/dist/*.whl $(INSTALLDIR)
 
 clean:
 	@rm -rf $(BUILDDIR)
