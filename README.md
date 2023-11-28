@@ -9,8 +9,19 @@ This package is designed to stay on PyPI for at least 50 years.
 
 This package can be installed using the following `pip` command:
 
-```text
+```bash
 pip install grigorify
 ```
 
 ## Script usage
+A name can be encoded into a circuit using the command:
+
+```bash
+python3 -m grigorify --encode NAME
+```
+
+Then, this circuit can be decoded using the command:
+
+```bash
+python3 -m grigorify --decode
+```
